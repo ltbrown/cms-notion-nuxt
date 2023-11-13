@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .t-hero-title,
+  .t-summary__headline,
+  .t-module__hdln,
+  .t-now__hdln,
+  .t-group-hdln--free,
+  .c-oops-hdln,
+  .t-points__hdln--Banner,
+  .t-click-rewards__hdln,
+  .t-click-rewards__hdln__num,
+  .t-module__hdln--la-callout,
+  .t-challenge__subhead,
+  .t-myAccnt-hdln,
+  .t-myAccnt-hdln--sum {
+    @apply font-semibold;
+  }
+
+  .t-hero-title {
+    @apply py-1 leading-tight;
+  }
+
+  .c-rules__item--icon p {
+    @apply md:text-[18px];
+  }
+}
