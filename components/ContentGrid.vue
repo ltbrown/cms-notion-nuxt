@@ -9,11 +9,30 @@ res.json().then((payload) => {
   state.feeddata = payload;
   console.log(payload);
 });
+
+const { pending, data: feeddata } = useFetch(
+  "http://localhost:3000/api/notion",
+  { lazy: true }
+);
 </script>
 <template>
   <div class="max-w-screen-xl">
-    <div class="mb-4">ALF PELL = Alfalfa Pellets</div>
+    <div v-if="pending">
+      <p>Loading ...</p>
+    </div>
+    <div v-else>
+      <div v-if="feeddata">
+        <p>Loaded!</p>
+        <ul class="my-10">
+          <li v-for="item in feeddata" :key="feeddata.id">
+            {{ item }}
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="dataTables_wrapper">
+      <div class="mb-4">ALF PELL = Alfalfa Pellets</div>
+
       <table class="text-sm text-left text-gray-500 dark:text-gray-400">
         <thead
           class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
@@ -90,15 +109,28 @@ res.json().then((payload) => {
 
 /* data table wrapper */
 .dataTables_wrapper {
-  /* zoom: 1;
-  clear: both;
-  font-size: 12px;
-  position: relative; */
-  /* border: 1px solid pink; */
-  padding: 12px;
-  /* overflow: hidden; */
-  width: 100%;
+  /* width: 500px; */
+  /* width: 100vw; */
+  /* min-width: 375px; */
+  /* max-width: -moz-fit-content;
+  max-width: fit-content; */
+  width: 350px;
   overflow-x: auto;
+}
+@media (min-width: 520px) {
+  .dataTables_wrapper {
+    width: 500px;
+  }
+}
+@media (min-width: 768px) {
+  .dataTables_wrapper {
+    width: 740px;
+  }
+}
+@media (min-width: 1020px) {
+  .dataTables_wrapper {
+    width: 1000px;
+  }
 }
 /* th,
 td {

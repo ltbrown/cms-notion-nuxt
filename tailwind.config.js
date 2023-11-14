@@ -8,5 +8,5 @@ module.exports = {
   ],
   theme: {},
   variants: {},
-  plugins: [require("flowbite")],
+  plugins: [],
 };

@@ -8,22 +8,119 @@ const res = await fetch("http://localhost:3000/api/gallery");
 res.json().then((images) => {
   state.images = images;
 });
+
+// notification checkbox
+// const selected = ref(true);
+
+// nuxt ui table info
+// const columns = [
+//   {
+//     key: "id",
+//     label: "ID",
+//     sortable: true,
+//   },
+//   {
+//     key: "name",
+//     label: "Name",
+//     sortable: true,
+//   },
+//   {
+//     key: "title",
+//     label: "Title",
+//     sortable: true,
+//   },
+//   {
+//     key: "email",
+//     label: "Email",
+//     sortable: true,
+//     direction: "desc",
+//   },
+//   {
+//     key: "role",
+//     label: "Role",
+//   },
+// ];
+
+// const people = [
+//   {
+//     id: 1,
+//     name: "Lindsay Walton",
+//     title: "Front-end Developer",
+//     email: "lindsay.walton@example.com",
+//     role: "Member",
+//   },
+//   {
+//     id: 2,
+//     name: "Courtney Henry",
+//     title: "Designer",
+//     email: "courtney.henry@example.com",
+//     role: "Admin",
+//   },
+//   {
+//     id: 3,
+//     name: "Tom Cook",
+//     title: "Director of Product",
+//     email: "tom.cook@example.com",
+//     role: "Member",
+//   },
+//   {
+//     id: 4,
+//     name: "Whitney Francis",
+//     title: "Copywriter",
+//     email: "whitney.francis@example.com",
+//     role: "Admin",
+//   },
+//   {
+//     id: 5,
+//     name: "Leonard Krasner",
+//     title: "Senior Designer",
+//     email: "leonard.krasner@example.com",
+//     role: "Owner",
+//   },
+//   {
+//     id: 6,
+//     name: "Floyd Miles",
+//     title: "Principal Designer",
+//     email: "floyd.miles@example.com",
+//     role: "Member",
+//   },
+// ];
+const loading = ref(true);
 </script>
 
 <template>
   <div class="o-site">
-    <header class="o-site__header flex flex-col items-center mt-10 px-4">
+    <header class="o-site__header flex flex-col items-center m-10 px-4">
       <h1 class="text-[40px]">ヽ(♡‿♡)ノ</h1>
       <h2 class="text-pink-400 mt-4">Hello Wildwood Equi-Trac</h2>
     </header>
     <main class="o-site__content px-4">
-      <div class="db-images my-10">
+      <!-- <UCheckbox
+        v-model="selected"
+        name="notifications"
+        label="Notifications"
+      /> -->
+      <!-- <div>
+        <UButton>Button</UButton>
+        <br />
+        <UButton :loading="loading" label="Button Label" class="mt-4" />
+      </div> -->
+      <div class="db-images mb-10">
         <div v-for="(image, index) in state.images" :key="index">
           <img :src="image" />
         </div>
       </div>
 
-      <ContentGrid />
+      <ContentGrid2 />
+
+      <!-- <div class="dataTables_wrapper">
+        <UTable
+          :columns="columns"
+          :rows="people"
+          :sort="{ column: 'title' }"
+          class="border border-pink-200"
+        />
+      </div> -->
     </main>
     <footer
       class="o-site__footer mt-8 bg-[#121212] w-full py-12 px-4 flex items-center"
@@ -72,17 +169,9 @@ img:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   color: white;
   background: linear-gradient(#111, #222);
-  /* height: 100%; */
-  /* min-width: 240px; */
-  /* border: 1px solid pink; */
   min-height: 100vh;
-}
-
-.o-site__header {
-  flex: 0 0 auto;
 }
 
 .o-site__content {
@@ -90,6 +179,26 @@ img:hover {
 }
 
 .o-site__footer {
-  flex: 0 0 auto;
+  flex-shrink: 0;
+}
+
+.dataTables_wrapper {
+  width: 350px;
+  overflow-x: auto;
+}
+@media (min-width: 520px) {
+  .dataTables_wrapper {
+    width: 500px;
+  }
+}
+@media (min-width: 768px) {
+  .dataTables_wrapper {
+    width: 740px;
+  }
+}
+@media (min-width: 1020px) {
+  .dataTables_wrapper {
+    width: 1000px;
+  }
 }
 </style>

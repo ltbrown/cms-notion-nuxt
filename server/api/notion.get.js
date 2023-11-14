@@ -7,26 +7,34 @@ import { Client } from "@notionhq/client";
 //   // database id
 //   // const database_id = process.env.NOTION_DATABASE_ID_FEED;
 
-//   if (req.method === "POST") {
-//     // TODO: handle post request
-//   } else {
-//     // handle GET
-//     const database = await notion.databases.query({
-//       database_id: process.env.NOTION_DATABASE_ID_FEED,
-//     });
+// if (req.method === "POST") {
+//   // TODO: handle post request
+// } else {
+//   // handle GET
+//   const database = await notion.databases.query({
+//     database_id: process.env.NOTION_DATABASE_ID_FEED,
+//   });
 
-//     const feedData = [];
+//   const feedData = [];
 
-//     // loop over database results
-//     database.results.map((row) => {
-//       feedData.push({
-//         id: row.id,
-//         stall: row.properties.Stall.number,
-//         horse: row.properties.Horse.title[0].plain_text,
-//         amgrain: row.properties.AMGrain.rich_text[0].plain_text,
-//       });
+//   // loop over database results
+//   database.results.map((row) => {
+//     feedData.push({
+//       id: result.properties.ID.unique_id.number,
+//       stall: result.properties.Stall.rich_text[0].plain_text,
+//       horse: result.properties.Horse.title[0].text.content,
+//       amgrain: result.properties["AM Grain"].rich_text[0].plain_text,
+//       pmgrain: result.properties["PM Grain"].rich_text[0].plain_text,
+//       amsupplements:
+//         result.properties["AM Supplements"].rich_text[0].plain_text,
+//       bp: result.properties.BP.rich_text[0].plain_text,
+//       lc: result.properties.LC.rich_text[0].plain_text,
+//       pmsupplements:
+//         result.properties["PM Supplements"].rich_text[0].plain_text,
+//       tags: result.properties.Tags.multi_select[0].name,
 //     });
-//   }
+//   });
+// }
 
 //   return {
 //     feedData,
